@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 import time
 from loguru import logger
-
+from fastapi.responses import JSONResponse
 
 # Создаём таблицы
 #Base.metadata.create_all(bind=engine)
@@ -47,13 +47,11 @@ app.include_router(cart.router)
 app.include_router(orders.router)
 
 # Корневой эндпоинт для проверки
+from fastapi.responses import JSONResponse
+
 @app.get("/")
 async def root():
-    """
-    Корневой маршрут, подтверждающий, что API работает.
-    """
-    return {"message": "Добро пожаловать в API интернет-магазина!"}
-
+    return {"message": "Welcome to FastAPI Ecommerce API!"}
 app.mount("/media", StaticFiles(directory="media"), name="media")
 
 # Add the session middleware first
