@@ -20,9 +20,8 @@ WORKDIR $HOME
 # копирование проекта FastAPI в рабочую директорию
 # Copy files with proper ownership directly
 COPY --chown=fast:fast app app
-COPY --chown=fast:fast media media
-COPY --chown=fast:fast requirements.txt alembic.ini .env ./
-
+#COPY --chown=fast:fast media media
+COPY --chown=fast:fast requirements.txt alembic.ini ./
 # Upgrade pip and install requirements
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
