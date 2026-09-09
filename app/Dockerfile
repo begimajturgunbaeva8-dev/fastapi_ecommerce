@@ -28,3 +28,5 @@ RUN pip install --upgrade pip \
 
 # Switch to non-root user after setup
 USER fast
+# Запуск приложения FastAPI
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "10000"]
